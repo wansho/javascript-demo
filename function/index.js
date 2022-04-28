@@ -111,4 +111,84 @@ function localScopeDemo2(){
 
 // 定义常量，如果重新赋值后，会报错
 const PI = 3.14;
-PI = 3.14159; // TypeError: Assignment to constant variable.
+// PI = 3.14159; // TypeError: Assignment to constant variable.
+
+
+// 解构赋值
+// 数组解构
+let [a, [b, c]] = [1, [2, 3]]
+console.log(a, b, c); // 1 2 3
+let [firstNum, ...otherNum] = [1, 2, 3]
+console.log(otherNum); // [2, 3]
+// 只取第三个元素
+let [, , d] = [1, 2, 3];
+console.log(d); // 3
+// 对象解构
+let {foo2, bar2} = {foo2: 'aaa', bar2: 'bbb'};
+console.log(foo2, bar2); // aaa bbb
+let {foo3, bar3: {bar31}} = {foo3: 'aaa', bar3: {bar31: 'bbb'}};
+console.log(foo3, bar31); // aaa bbb
+// 对象解构时属性重命名
+var person = {
+  name: '小明',
+  age: 20,
+  gender: 'male',
+  passport: 'G-12345678',
+  school: 'No.4 middle school'
+};
+// 把 passport 属性赋值给变量 id:
+let {name, passport:id} = person;
+console.log(name, id);
+// 默认值
+let {age, single=true} = person;
+console.log(age, single); // 20 岁，默认单身
+// 函数入参，解构赋值
+function add([x=3, y=5]){
+  return x + y;
+}
+console.log(add([1, 2])); // 3
+console.log(add([1])); // 6
+function add2({x=3, y=5}){
+  return x + y;
+}
+console.log(add2({x: 1, y: 2})); // 3
+console.log(add2({x: 1})); // 6
+
+// 高阶函数
+function pow(x){
+  return x * x;
+}
+var arr = [1, 2, 3, 4, 5];
+arr.map(pow); // [1, 4, 9, 16, 25]  
+// reduce [x1, x2, x3, x4].reduce(f) = f(f(f(x1, x2), x3), x4)
+arr.reduce((x, y) => x + y); // 15
+// sort 也是一个高阶函数
+[10, 20, 1, 2].sort() // [1, 10, 2, 20] array 的 sort 方法默认把所有元素先转换成 String 再排序。
+arr.sort((x, y) => {
+  if(x > y){
+    return 1;
+  }
+  if(x < y){
+    return -1;
+  }
+  return 0;
+}); // [1, 2, 10, 20]
+// 排序后，返回的是原对象，而不是新对象！
+let newArr = arr.sort();
+console.log(newArr === arr); // true
+
+// every 高阶函数，等同于 Java 中的 allMatch
+let arr2 = [1, 2, 3, 4, 5];
+arr2.every( x => x > 0);  // true
+
+// find 高阶函数，等同于 Java 中的 anyMatch，返回第一个符合条件的元素
+let arr3 = [1, 2, 3, 4, 5];
+console.log(arr3.find( x => x > 3)); // 4
+
+// findIndex 高阶函数，和 find 类似，但是返回符合条件的元素的索引
+let arr4 = [1, 2, 3, 4, 5];
+console.log(arr4.findIndex( x => x > 3)); // 3，索引为 3 的元素
+
+// forEach 高阶函数，等同于 Java 中的 forEach
+let arr5 = [1, 2, 3, 4, 5];
+arr5.forEach( x => console.log(x)); // 1 2 3 4 5
