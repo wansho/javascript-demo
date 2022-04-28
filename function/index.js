@@ -192,3 +192,36 @@ console.log(arr4.findIndex( x => x > 3)); // 3，索引为 3 的元素
 // forEach 高阶函数，等同于 Java 中的 forEach
 let arr5 = [1, 2, 3, 4, 5];
 arr5.forEach( x => console.log(x)); // 1 2 3 4 5
+
+// 创建一个匿名函数并且立即执行
+(function(x){return x * x})(5); // 25
+
+// 闭包
+// 在面向对象的程序设计语言里，比如Java和C++，要在对象内部封装一个私有变量，可以用private修饰一个成员变量。
+// 在没有class机制，只有函数的语言里，借助闭包，同样可以封装一个私有变量。
+// 在返回的对象中，实现了一个闭包，该闭包携带了局部变量x，并且，从外部代码根本无法访问到变量x。
+// 换句话说，闭包就是携带状态的函数，并且它的状态可以完全对外隐藏起来。
+function create_counter(initial){
+  var x = initial || 0;
+  return {inc: function(){x += 1; return x;}};
+}
+var calc1 = create_counter();
+console.log(calc1.inc()); // 1
+console.log(calc1.inc()); // 2
+var calc2 = create_counter(10);
+console.log(calc2.inc()); // 11
+console.log(calc2.inc()); // 12
+
+// 箭头函数 
+// 箭头函数可以看成是匿名函数的简写。
+// 箭头函数还有一个特性：箭头函数内部的 this 总是指向词法作用域，也就是外层调用者 obj
+var obj = {
+  birth: 1995,
+  getAge: function(){
+    // 这里的 this 肯定指向 obj
+    var b = this.birth;
+    // 这里的函数的箭头函数中的 this，仍然指向 obj
+    var fn = () => new Date().getFullYear() - this.birth;
+    return fn();
+  }
+}
