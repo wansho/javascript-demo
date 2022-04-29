@@ -21,12 +21,17 @@ xiaoming.run(); // 小明 is running...
 var xiaoming2 = Object.create(robot);
 xiaoming2.name = '小明2';
 console.log(xiaoming2); 
+console.log(xiaoming2.__proto__ === robot); // true
 
 // 当我们用 obj.xxx 访问一个对象的属性时，JavaScript 引擎先在当前对象上查找该属性，
 // 如果没有找到，就到其原型对象上找，如果还没有找到，就一直上溯到 Object.prototype 对象，
 // 最后，如果还没有找到，就只能返回 undefined。
-// Array 对象的原型链是：arr -> Array.prototype -> Object.prototype -> null
+
+// Array 对象的原型链是：arr -> Array.prototype(Array 的基类) -> Object.prototype（Object 基类） -> null
 // Array.prototype 中定义了 indexOf(), shift() 方法，所以 Array 对象能直接调用这些方法
+var arr = ['a', 'b', 'c'];
+console.log(arr.__proto__ === Array.prototype); // true
+console.log(Person.prototype.__proto__ === Object.prototype);
 
 // 构造函数
 function Person(name, age) {
@@ -34,4 +39,13 @@ function Person(name, age) {
   this.age = age;
   this.toString = () => {console.log(this.name + ' ' + this.age);}
 }
-// 如此便定义了一个构造函数
+var xiaoming3 = new Person('小明', 20);
+xiaoming3.toString();
+console.log(xiaoming3.__proto__ === Person.prototype); // true
+// 用 new Person() 创建的对象还从原型上获得了一个 constructor 属性，它指向函数 Person 本身
+console.log(xiaoming3.constructor);
+console.log(xiaoming3.constructor === Person); // true
+Object.getPrototypeOf(xiaoming3) === Person.prototype; // true
+xiaoming3 instanceof Person; // true
+
+// 说实话，原型链这块，没看懂，头晕
