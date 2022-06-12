@@ -1,6 +1,7 @@
 /***
  * JavaScript 面向对象编程的设计：prototype 原型
  * JavaScript 没有类，只有对象，可以通过配置对象的原型，指定该对象继承自哪一个对象
+ * JavaScript的原型链和Java的Class区别就在，它没有“Class”的概念，所有对象都是实例，所谓继承关系不过是把一个对象的原型指向另一个对象而已。
  */
 
 var robot = {

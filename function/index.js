@@ -5,6 +5,15 @@
  * 4. JavaScript 脚本内定义的所有的函数，变量，实际上都是全局对象的属性
  */
 
+// 非严格模式下，函数中的 this 指向 Window
+function test(){
+  console.log(this); // Window 对象
+  this.count++;
+}
+
+test();
+console.log(Window.count)
+
 // 定义函数
 function abs(x){
   if(x < 0){

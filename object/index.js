@@ -9,6 +9,19 @@ for (let key in obj) {
   console.log(key + ': ' + obj[key]);
 }
 
+/***
+ * 批量修改对象的属性
+ * 使用场景：前缀特别长的时候
+ * with(document){}
+ */
+with(obj){
+  a=2;
+  b=3;
+  c=4;
+}
+console.log('obj', obj);
+
+
 // this
 var xiaoming = {
   name: '小明',
