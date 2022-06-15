@@ -61,3 +61,11 @@ window.parseInt = function(){
   // 这里的 arguments 存储的就是 function 传入的参数，所以我们不需要指定那么多参数
   return oldParseInt.apply(null, arguments);
 }
+
+/***
+ * 对 object 进行遍历
+ * Object.keys(obj) – returns all the keys of object as array
+ * Object.values(obj) – returns all the values of the object as array
+ * Object.entries(obj) – returns an array of [key, value]
+ */
+ 
