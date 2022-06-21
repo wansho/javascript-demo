@@ -46,3 +46,7 @@ console.log(list.join('-')); // a-x-y-d-e
 
 // forEach
 tmp.forEach(num => console.log(num + 1));
+
+for(let point of tmp){
+  console.log(point);
+}
