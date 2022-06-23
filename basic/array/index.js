@@ -50,3 +50,6 @@ tmp.forEach(num => console.log(num + 1));
 for(let point of tmp){
   console.log(point);
 }
+
+tmp = [1, 2, 3];
+console.log(tmp.slice(-1))
