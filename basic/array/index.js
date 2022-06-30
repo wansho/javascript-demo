@@ -52,4 +52,8 @@ for(let point of tmp){
 }
 
 tmp = [1, 2, 3];
-console.log(tmp.slice(-1))
+console.log(tmp.slice(-1)) // [3], 对 array 进行 slice，-1 表示倒数第一个 value, -2 表示倒数第二个 value,
+
+// 创建一个固定长度的 array
+const array = new Array(9).fill(1)
+console.log(array)
