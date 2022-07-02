@@ -57,3 +57,14 @@ console.log(tmp.slice(-1)) // [3], 对 array 进行 slice，-1 表示倒数第�
 // 创建一个固定长度的 array
 const array = new Array(9).fill(1)
 console.log(array)
+
+const number1 = 0;
+const number2 = 0;
+console.log(number1 === number2);
+
+let demo = '#'
+
+console.log(demo === '#');
+
+let test = '3.14';
+console.log(test * 1.0);
