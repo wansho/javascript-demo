@@ -234,3 +234,10 @@ var obj = {
     return fn();
   }
 }
+
+// 测试传入多个参数时，有参数没传的情况
+function testMultiParams(para1, para2){
+  console.log(para1);
+  console.log(para2); // undefined
+}
+testMultiParams('hehe')
