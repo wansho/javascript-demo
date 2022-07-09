@@ -68,3 +68,11 @@ console.log(demo === '#');
 
 let test = '3.14';
 console.log(test * 1.0);
+
+
+// 判断是否满足条件
+const numbers = [1,2,3,4]
+console.log(numbers.some(number => number > 1)); // true
+
+// 找到任意一个满足条件的值并返回，如果没找到，则返回 undefined
+console.log(numbers.find(number => number === 1)); // 1
