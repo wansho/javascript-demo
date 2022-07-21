@@ -5,3 +5,6 @@ var duration = dayjs.duration(86401011, 'ms').asHours();
 
 console.log(duration);
 
+// 能够直接处理字符串时间
+var time = "2022-07-21 00:00:00";
+console.log(dayjs(time))

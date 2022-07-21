@@ -35,3 +35,9 @@ if([]){
 }else{
   console.log(false);
 }
+
+// || &&
+var a = 1;
+console.log(
+  (a > 0 || a === 2) && 4
+) // 4 前面满足条件，则最后直接返回值
